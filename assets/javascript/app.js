@@ -33,7 +33,7 @@ var questionsAndAnswers = [
         correctAnswer: "True Love"
     }
 ];
-var answeredCorrectly = "";
+var answeredCorrectly = 0;
 
 //stop timer function
 function stopTimer() {
@@ -60,7 +60,7 @@ var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * question
         temp--;
         $("#timeLeft").html("<h2>" + temp + "</h2>");
         if (temp === 0) {
-            stop();
+            stopTimer();
             alert("Time Up!");
         }
     }
@@ -77,16 +77,21 @@ var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * question
     }
     //on click compare to correct answer index
         $(".answer").on("click", function() {
-            debugger;
-        //if correct stop timer and display answered correctly
-            if (randomizeQuestions.possibleAnswers[document.getElementById(this.id).id] === randomizeQuestions.correctAnswer)
-            console.log("correct");
-            else
-            console.log("incorrect")
-            debugger;
             
-            //correct answer ++
+            //if correct stop timer and display answered correctly
+            if (randomizeQuestions.possibleAnswers[document.getElementById(this.id).id] === randomizeQuestions.correctAnswer) {
 
+            //correct answer ++
+            $("#answerResult").html("CORRECT!");
+            console.log("correct");
+            answeredCorrectly++
+            stopTimer();
+            }
         //if incorrect stop timer and display answered incorrectly and display correct answer
+            else {
+            $("#answerResult").html("Incorrect. The correct answer is: " + randomizeQuestions.correctAnswer);
+            console.log("incorrect");
+            stopTimer();
+            }
         })
 // }
