@@ -67,7 +67,9 @@ var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * question
     //display question using random number
     $("#questionDisplay").html(randomizeQuestions.questions);
     //loop through display corresponding answer possibilities
-
+    for (var i = 0; i < randomizeQuestions.possibleAnswers.length ; i++) {
+        $("#answersContainer").append("<ul>" + randomizeQuestions.possibleAnswers[i] + "</ul>");
+    }
     //on click compare to correct answer index
         
         //if correct stop timer and display answered correctly
