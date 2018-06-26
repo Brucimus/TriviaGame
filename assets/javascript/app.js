@@ -1,5 +1,6 @@
 //variables
-var questions = [
+var questionTimeAmt = 15;
+var questionsAndAnswers = [
     Q1 = {
         questions: "What is the answer to life, the universe, and everything?",
         possibleAnswers: [
@@ -29,15 +30,28 @@ var questions = [
             "Humperdinck"
         ],
         correctAnswer: "True Love"
-    },
-]
+    }
+];
 
-var answeredCorrectly = "",
+var answeredCorrectly = "";
 
 //randomize questions
-
+var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * questionsAndAnswers.length)];
 //set timer function
+// setTimeout(questionTime, 1000 * questionTimeAmt);
+setTimeout(displayTime, 1000);
 
+// function questionTime() {
+
+    var temp = questionTimeAmt;
+    //show time remaining
+    for (var i = temp; temp > 0; temp--) {
+    function displayTime() {
+        $("#timeLeft").html("<h2>" + temp + "</h2>");
+        console.log(temp);
+        temp--;
+      }
+    }
     //display question using random number
 
     //loop through display corresponding answer possibilities
@@ -49,3 +63,4 @@ var answeredCorrectly = "",
             //correct answer ++
 
         //if incorrect stop timer and display answered incorrectly and display correct answer
+// }
