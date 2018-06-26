@@ -40,19 +40,22 @@ function stopTimer() {
    clearInterval(intervalId);
 }
 
+//Clear Elements Function
+function clear() {
+    $("#timeLeft").empty();
+    $("#questionDisplay").empty();
+    $("#answersContainer").empty();
+    $("#answerResult").empty();
+}
 
-
-//randomize questions
-var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * questionsAndAnswers.length)];
 //set timer function
-    intervalId = setInterval(decrement, 1000);
-    // clearInterval(intervalId);
+intervalId = setInterval(decrement, 1000);
+
 
 // setTimeout(questionTime, 1000 * questionTimeAmt);
 
 // function questionTime() {
 
-    // var temp = questionTimeAmt;
     //show time remaining
     //decrement function
     var temp = questionTimeAmt;
@@ -64,8 +67,14 @@ var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * question
             alert("Time Up!");
         }
     }
+
+function redisplay() {
+    //randomize questions
+    var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * questionsAndAnswers.length)];
+
     //display question using random number
     $("#questionDisplay").html(randomizeQuestions.questions);
+
     //loop through display corresponding answer possibilities
     for (var i = 0; i < randomizeQuestions.possibleAnswers.length ; i++) {
         var holder = $("<ul>" + randomizeQuestions.possibleAnswers[i] + "</ul>");
@@ -83,15 +92,16 @@ var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * question
 
             //correct answer ++
             $("#answerResult").html("CORRECT!");
-            console.log("correct");
-            answeredCorrectly++
+            answeredCorrectly++;
             stopTimer();
             }
+
         //if incorrect stop timer and display answered incorrectly and display correct answer
             else {
             $("#answerResult").html("Incorrect. The correct answer is: " + randomizeQuestions.correctAnswer);
-            console.log("incorrect");
             stopTimer();
             }
         })
-// }
+}
+
+redisplay();
