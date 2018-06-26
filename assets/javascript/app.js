@@ -68,13 +68,25 @@ var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * question
     $("#questionDisplay").html(randomizeQuestions.questions);
     //loop through display corresponding answer possibilities
     for (var i = 0; i < randomizeQuestions.possibleAnswers.length ; i++) {
-        $("#answersContainer").append("<ul>" + randomizeQuestions.possibleAnswers[i] + "</ul>");
+        var holder = $("<ul>" + randomizeQuestions.possibleAnswers[i] + "</ul>");
+        holder.attr({
+            "id": i
+        })
+        holder.addClass('answer');
+        $("#answersContainer").append(holder);
     }
     //on click compare to correct answer index
-        
+        $(".answer").on("click", function() {
+            debugger;
         //if correct stop timer and display answered correctly
+            if (randomizeQuestions.possibleAnswers[document.getElementById(this.id).id] === randomizeQuestions.correctAnswer)
+            console.log("correct");
+            else
+            console.log("incorrect")
+            debugger;
             
             //correct answer ++
 
         //if incorrect stop timer and display answered incorrectly and display correct answer
+        })
 // }
