@@ -14,7 +14,7 @@
     </head>
     <body>
         <!--Container-->
-
+        <div class="card">
             <!--Rules-->
             <p>
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -28,27 +28,31 @@
             </div>
 
             <!--Time Remaining-->
-            <div id=timeLeft>
+            <div id=timeLeft  class="card-header">
 
             </div>
             
             <!--Question Container-->
-            <div id=questionDisplay>
+            <div class="card-body">
+                <div id=questionDisplay class="card-title">
 
-            </div>
-            <!--Answers Container-->
-            <div id=answersContainer>
+                </div>
+                <div id="answerBox" class="card">
+                    <!--Answers Container-->
+                    <div id=answersContainer class="card-text">
 
-            </div>
-            <!--Answer Result - If Wrong, show correct answer-->
-            <div id=answerResult>
-
+                    </div>
+                    <!--Answer Result - If Wrong, show correct answer-->
+                    <div id=answerResult>
+                    
+                    </div>
+                </div>
             </div>
 
         <!--javascript link-->
         <script src="assets/javascript/app.js"></script>
         <!-- Bootstrap's javascript file that allows the dropdown menu to work  -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+        </div>
     </body>
 </html>

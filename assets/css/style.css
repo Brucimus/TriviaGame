@@ -1,3 +1,17 @@
 div, .btn {
  margin: 20px;
 }
+
+/* Body Background*/
+body {
+    background-image: url("../images/footer_lodyas.png");
+}
+
+.card-header, .card-title{
+   text-align: center;
+}
+
+#answerBox {
+    margin: 0% 15% 0% 15%;
+    padding-left: 5%;
+}
