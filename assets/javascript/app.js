@@ -110,9 +110,13 @@ function redisplay() {
         intervalId = setInterval(decrement, 1000);
         listedQuestion = questionsAndAnswers[questionIteration];
 
-        //display question using random number
+        //display question after iteration
         $("#questionDisplay").html("<h3>" + questionsAndAnswers[questionIteration].questions + "</h3>");
         $("#timeLeft").html("<h2>" + questionTimeAmt + "</h2>");
+
+        //progress the progress bar
+        var progBarNumber = Math.round(((questionIteration+1)/questionsAndAnswers.length)*100);
+        $(".progress-bar").attr("style","width: "+progBarNumber+"%").attr("aria-valuenow",progBarNumber).html(progBarNumber+"%");
 
         //loop through display corresponding answer possibilities
         for (var i = 0; i < listedQuestion.possibleAnswers.length ; i++) {

@@ -1,5 +1,6 @@
-div, .btn {
- margin: 20px;
+/*a little room for things*/
+.collapse, .btn, .progress {
+    margin: 20px;
 }
 
 /* Body Background*/
@@ -7,10 +8,13 @@ body {
     background-image: url("../images/footer_lodyas.png");
 }
 
+/* center timer and question */
 .card-header, .card-title{
-   text-align: center;
+    margin: 20px;
+    text-align: center;
 }
 
+/* off center possible answers and eventual answer */
 #answerBox {
     margin: 0% 15% 0% 15%;
     padding-left: 5%;
