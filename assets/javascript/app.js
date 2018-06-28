@@ -94,7 +94,7 @@ function redisplay() {
         listedQuestion = questionsAndAnswers[questionIteration];
         //display question using random number
         $("#questionDisplay").html(questionsAndAnswers[questionIteration].questions);
-
+        $("#timeLeft").html("<h2>" + questionTimeAmt + "</h2>");
         //loop through display corresponding answer possibilities
         for (var i = 0; i < listedQuestion.possibleAnswers.length ; i++) {
             var holder = $("<ul>" + listedQuestion.possibleAnswers[i] + "</ul>");
