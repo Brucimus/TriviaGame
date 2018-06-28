@@ -34,6 +34,8 @@ var questionsAndAnswers = [
     }
 ];
 var answeredCorrectly = 0;
+var questionIteration = 0;
+var listedQuestion;
 
 //stop timer function
 function stopTimer() {
@@ -51,6 +53,12 @@ function clear() {
 //set timer function
 intervalId = setInterval(decrement, 1000);
 
+//go to next question
+function nextQuestion() {
+    setTimeout(redisplay, 1000 * 5);
+    console.log("something");
+    // debugger;
+}
 
 // setTimeout(questionTime, 1000 * questionTimeAmt);
 
@@ -70,38 +78,50 @@ intervalId = setInterval(decrement, 1000);
 
 function redisplay() {
     //randomize questions
-    var randomizeQuestions = questionsAndAnswers[Math.floor(Math.random() * questionsAndAnswers.length)];
 
+    //clear display
+    clear();
+    listedQuestion = questionsAndAnswers[questionIteration];
     //display question using random number
-    $("#questionDisplay").html(randomizeQuestions.questions);
+    $("#questionDisplay").html(questionsAndAnswers[questionIteration].questions);
 
     //loop through display corresponding answer possibilities
-    for (var i = 0; i < randomizeQuestions.possibleAnswers.length ; i++) {
-        var holder = $("<ul>" + randomizeQuestions.possibleAnswers[i] + "</ul>");
+    for (var i = 0; i < listedQuestion.possibleAnswers.length ; i++) {
+        var holder = $("<ul>" + listedQuestion.possibleAnswers[i] + "</ul>");
         holder.attr({
             "id": i
         })
         holder.addClass('answer');
         $("#answersContainer").append(holder);
     }
-    //on click compare to correct answer index
-        $(".answer").on("click", function() {
-            
-            //if correct stop timer and display answered correctly
-            if (randomizeQuestions.possibleAnswers[document.getElementById(this.id).id] === randomizeQuestions.correctAnswer) {
 
-            //correct answer ++
-            $("#answerResult").html("CORRECT!");
-            answeredCorrectly++;
-            stopTimer();
-            }
+    onClickFunc();
 
-        //if incorrect stop timer and display answered incorrectly and display correct answer
-            else {
-            $("#answerResult").html("Incorrect. The correct answer is: " + randomizeQuestions.correctAnswer);
-            stopTimer();
-            }
-        })
 }
 
 redisplay();
+
+function onClickFunc() {
+    //on click compare to correct answer index
+    $(".answer").on("click", function() {
+        
+        //if correct stop timer and display answered correctly
+        if (listedQuestion.possibleAnswers[document.getElementById(this.id).id] === listedQuestion.correctAnswer) {
+
+        //correct answer ++
+        $("#answerResult").html("CORRECT!");
+        answeredCorrectly++;
+        stopTimer();
+        questionIteration++;
+        nextQuestion();
+        }
+
+        //if incorrect stop timer and display answered incorrectly and display correct answer
+        else {
+        $("#answerResult").html("Incorrect. The correct answer is: " + listedQuestion.correctAnswer);
+        stopTimer();
+        questionIteration++;
+        nextQuestion();
+        }
+    });
+}
