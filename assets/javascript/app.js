@@ -145,6 +145,9 @@ function onClickFunc() {
         stopTimer();
         questionIteration++;
         temp = questionTimeAmt;
+        
+        //stop click function after clicked
+        $(".answer").off("click");
         nextQuestion();
         }
 
@@ -154,6 +157,9 @@ function onClickFunc() {
         stopTimer();
         questionIteration++;
         temp = questionTimeAmt;
+
+        //stop click function after clicked
+        $(".answer").off("click");
         nextQuestion();
         }
     });
