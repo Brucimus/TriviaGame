@@ -81,22 +81,27 @@ function redisplay() {
 
     //clear display
     clear();
-    listedQuestion = questionsAndAnswers[questionIteration];
-    //display question using random number
-    $("#questionDisplay").html(questionsAndAnswers[questionIteration].questions);
+    if ( questionIteration === questionsAndAnswers.length) {
 
-    //loop through display corresponding answer possibilities
-    for (var i = 0; i < listedQuestion.possibleAnswers.length ; i++) {
-        var holder = $("<ul>" + listedQuestion.possibleAnswers[i] + "</ul>");
-        holder.attr({
-            "id": i
-        })
-        holder.addClass('answer');
-        $("#answersContainer").append(holder);
+        $("#questionDisplay").html("<h2>You got " + answeredCorrectly + "/" + questionsAndAnswers.length + "</h2>");
     }
+    else {
+        listedQuestion = questionsAndAnswers[questionIteration];
+        //display question using random number
+        $("#questionDisplay").html(questionsAndAnswers[questionIteration].questions);
 
-    onClickFunc();
+        //loop through display corresponding answer possibilities
+        for (var i = 0; i < listedQuestion.possibleAnswers.length ; i++) {
+            var holder = $("<ul>" + listedQuestion.possibleAnswers[i] + "</ul>");
+            holder.attr({
+                "id": i
+            })
+            holder.addClass('answer');
+            $("#answersContainer").append(holder);
+        }
 
+        onClickFunc();
+    }
 }
 
 redisplay();
