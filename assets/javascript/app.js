@@ -50,8 +50,7 @@ function clear() {
     $("#answerResult").empty();
 }
 
-//set timer function
-intervalId = setInterval(decrement, 1000);
+
 
 //go to next question
 function nextQuestion() {
@@ -60,9 +59,13 @@ function nextQuestion() {
     // debugger;
 }
 
-// setTimeout(questionTime, 1000 * questionTimeAmt);
-
-// function questionTime() {
+// what happens upon timeout
+function timeOutFunc () {
+    $("#answerResult").html("Time's up. The correct answer is: " + listedQuestion.correctAnswer);
+        questionIteration++;
+        temp = questionTimeAmt;
+        nextQuestion();
+}
 
     //show time remaining
     //decrement function
@@ -72,7 +75,7 @@ function nextQuestion() {
         $("#timeLeft").html("<h2>" + temp + "</h2>");
         if (temp === 0) {
             stopTimer();
-            alert("Time Up!");
+            timeOutFunc();
         }
     }
 
@@ -86,6 +89,8 @@ function redisplay() {
         $("#questionDisplay").html("<h2>You got " + answeredCorrectly + "/" + questionsAndAnswers.length + "</h2>");
     }
     else {
+        //set timer function
+        intervalId = setInterval(decrement, 1000);
         listedQuestion = questionsAndAnswers[questionIteration];
         //display question using random number
         $("#questionDisplay").html(questionsAndAnswers[questionIteration].questions);
@@ -118,6 +123,7 @@ function onClickFunc() {
         answeredCorrectly++;
         stopTimer();
         questionIteration++;
+        temp = questionTimeAmt;
         nextQuestion();
         }
 
@@ -126,6 +132,7 @@ function onClickFunc() {
         $("#answerResult").html("Incorrect. The correct answer is: " + listedQuestion.correctAnswer);
         stopTimer();
         questionIteration++;
+        temp = questionTimeAmt;
         nextQuestion();
         }
     });
