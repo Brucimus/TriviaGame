@@ -1,6 +1,11 @@
 /*a little room for things*/
-.collapse, .btn, .progress {
-    margin: 20px;
+.collapse, .btn, .progress, #main-container {
+    margin: 40px;
+}
+
+#banner {
+    margin: 0px 40px 0px 40px;
+    border-radius: .25rem;
 }
 
 /* Body Background*/
