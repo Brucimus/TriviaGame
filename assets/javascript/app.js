@@ -139,28 +139,28 @@ function onClickFunc() {
         //if correct stop timer and display answered correctly
         if (listedQuestion.possibleAnswers[$(this).attr("val")] === listedQuestion.correctAnswer) {
 
-        //correct answer ++
-        $("#answerResult").html("CORRECT!");
-        answeredCorrectly++;
-        stopTimer();
-        questionIteration++;
-        temp = questionTimeAmt;
-        
-        //stop click function after clicked
-        $(".answer").off("click");
-        nextQuestion();
+            //correct answer ++
+            $("#answerResult").html("CORRECT!");
+            answeredCorrectly++;
+            stopTimer();
+            questionIteration++;
+            temp = questionTimeAmt;
+            
+            //stop click function after clicked
+            $(".answer").off("click");
+            nextQuestion();
         }
 
         //if incorrect stop timer and display answered incorrectly and display correct answer
         else {
-        $("#answerResult").html("Incorrect. The correct answer is: " + listedQuestion.correctAnswer);
-        stopTimer();
-        questionIteration++;
-        temp = questionTimeAmt;
+            $("#answerResult").html("Incorrect. The correct answer is: " + listedQuestion.correctAnswer);
+            stopTimer();
+            questionIteration++;
+            temp = questionTimeAmt;
 
-        //stop click function after clicked
-        $(".answer").off("click");
-        nextQuestion();
+            //stop click function after clicked
+            $(".answer").off("click");
+            nextQuestion();
         }
     });
 }
