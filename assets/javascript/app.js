@@ -31,6 +31,26 @@ var questionsAndAnswers = [
             "Humperdinck"
         ],
         correctAnswer: "True Love"
+    },
+    Q3 = {
+        questions: "You talkin' to me?",
+        possibleAnswers: [
+            "I'm the only one here.",
+            "You're only as healthy as you feel.",
+            "Yes",
+            "No"
+        ],
+        correctAnswer: "I'm the only one here."
+    },
+    Q3 = {
+        questions: "Who ya gonna call?",
+        possibleAnswers: [
+            "He-man! He-man!",
+            "Don't cross the streams!",
+            "Back of man, I'm a Scientist.",
+            "Ghostbusters"
+        ],
+        correctAnswer: "Ghostbusters"
     }
 ];
 var answeredCorrectly = 0;
