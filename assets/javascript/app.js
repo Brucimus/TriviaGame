@@ -75,8 +75,6 @@ function clear() {
 //go to next question
 function nextQuestion() {
     setTimeout(redisplay, 1000 * 5);
-    console.log("something");
-    // debugger;
 }
 
 // what happens upon timeout
@@ -100,7 +98,6 @@ function timeOutFunc () {
     }
 
 function redisplay() {
-    //randomize questions
 
     //clear display
     clear();
@@ -112,15 +109,15 @@ function redisplay() {
         //set timer function
         intervalId = setInterval(decrement, 1000);
         listedQuestion = questionsAndAnswers[questionIteration];
+
         //display question using random number
         $("#questionDisplay").html(questionsAndAnswers[questionIteration].questions);
         $("#timeLeft").html("<h2>" + questionTimeAmt + "</h2>");
+
         //loop through display corresponding answer possibilities
         for (var i = 0; i < listedQuestion.possibleAnswers.length ; i++) {
             var holder = $("<ul>" + listedQuestion.possibleAnswers[i] + "</ul>");
-            holder.attr({
-                "id": i
-            })
+            holder.attr("val", i);
             holder.addClass('answer');
             $("#answersContainer").append(holder);
         }
@@ -136,7 +133,7 @@ function onClickFunc() {
     $(".answer").on("click", function() {
         
         //if correct stop timer and display answered correctly
-        if (listedQuestion.possibleAnswers[document.getElementById(this.id).id] === listedQuestion.correctAnswer) {
+        if (listedQuestion.possibleAnswers[$(this).attr("val")] === listedQuestion.correctAnswer) {
 
         //correct answer ++
         $("#answerResult").html("CORRECT!");
